@@ -1,0 +1,18 @@
+FROM ubuntu:20.04 as patcher
+
+ENV PATH="$PATH:/usr/local/go/bin:/root/go/bin"
+
+WORKDIR /build
+
+RUN apt-get update && apt-get install -y git curl
+RUN curl -OL https://go.dev/dl/go1.18.3.linux-amd64.tar.gz && \
+    rm -rf /usr/local/go && \
+    tar -C /usr/local -xzf go1.18.3.linux-amd64.tar.gz && \
+    go version
+RUN git clone https://github.com/acrazing/protoc-gen-validate --depth 1 && \
+    cd protoc-gen-validate && \
+    go install .
+
+FROM acrazing/protobuf-builder:latest
+
+COPY --from=patcher /root/go/bin/protoc-gen-validate /usr/bin/
