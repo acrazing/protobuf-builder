@@ -20,3 +20,4 @@ An image for building Protobuf with everything you want.
 | [protoc-gen-validate](https://github.com/envoyproxy/protoc-gen-validate) | 0.6.7 | - |
 | [gofmt](https://pkg.go.dev/cmd/gofmt) | 1.18.3 | - |
 | [goimports](https://pkg.go.dev/golang.org/x/tools/cmd/goimports) | 0.1.11 | - |
+| [protoc-gen-openapi](https://github.com/google/gnostic) | [acrazing-fork](https://github.com/google/gnostic) | - |
